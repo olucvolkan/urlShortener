@@ -20,7 +20,7 @@ class UrlShortenerService
     {
 
         $bitLyUrlHandler = new BitLyUrlShortenerHandler();
-        if ($urlShortenerPostRequestDTO->provider === 'default' ||
+        if ($urlShortenerPostRequestDTO->provider === UrlShortenerPostRequestDTO::DEFAULT_PROVIDER ||
             $urlShortenerPostRequestDTO->provider === TinyUrlUrlShortenerHandler::TINYURL_PROVIDER ) {
             $tinyUrlHandler = new TinyUrlUrlShortenerHandler();
             $tinyUrlHandler->setNext($bitLyUrlHandler);

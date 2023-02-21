@@ -40,8 +40,8 @@ class BitLyUrlShortenerHandler extends AbstractHandler
             }
             return $urlShortenerPostResponseDTO;
         }
+        $this->setNext(new TinyUrlUrlShortenerHandler());
         return parent::handle($urlShortenerPostRequestDTO);
-
     }
 
     private function canSend(UrlShortenerPostRequestDTO $urlShortenerPostRequestDTO): bool
