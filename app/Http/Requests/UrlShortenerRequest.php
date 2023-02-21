@@ -12,7 +12,7 @@ class UrlShortenerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -42,9 +42,10 @@ class UrlShortenerRequest extends FormRequest
 
     public function data()
     {
-        return new UrlShortenerPostRequestDTO([
-            'url' => $this->input('url'),
-            'provider' => $this->input('provider'),
-        ]);
+
+        return new UrlShortenerPostRequestDTO(
+             $this->input('url'),
+             $this->input('provider')
+        );
     }
 }

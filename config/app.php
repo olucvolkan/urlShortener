@@ -123,6 +123,9 @@ return [
 
     'key' => env('APP_KEY'),
 
+    'bitLy_token' => env('BITLY_TOKEN'),
+    'bitLy_group_uid' => env('BITLY_GROUP_UID'),
+
     'cipher' => 'AES-256-CBC',
 
     /*

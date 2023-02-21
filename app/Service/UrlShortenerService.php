@@ -5,16 +5,28 @@ namespace App\Service;
 
 
 use App\DTO\UrlShortenerPostRequestDTO;
-use App\Service\UrlShortenerStrategy\Context;
+use App\DTO\UrlShortenerPostResponseDTO;
+use App\Service\UrlShortenerHandlers\BitLyUrlShortenerHandler;
+use App\Service\UrlShortenerHandlers\TinyUrlUrlShortenerHandler;
 
 class UrlShortenerService
 {
 
-    public function urlShort(UrlShortenerPostRequestDTO $urlShortenerPostRequestDTO)
+    /**
+     * @param UrlShortenerPostRequestDTO $urlShortenerPostRequestDTO
+     * @return UrlShortenerPostResponseDTO
+     */
+    public function urlShort(UrlShortenerPostRequestDTO $urlShortenerPostRequestDTO): UrlShortenerPostResponseDTO
     {
-        $context = new Context();
 
-        return $context->execute($urlShortenerPostRequestDTO);
+        $bitLyUrlHandler = new BitLyUrlShortenerHandler();
+        if ($urlShortenerPostRequestDTO->provider === 'default' ||
+            $urlShortenerPostRequestDTO->provider === TinyUrlUrlShortenerHandler::TINYURL_PROVIDER ) {
+            $tinyUrlHandler = new TinyUrlUrlShortenerHandler();
+            $tinyUrlHandler->setNext($bitLyUrlHandler);
+        }
+
+        return $bitLyUrlHandler->handle($urlShortenerPostRequestDTO);
     }
 
 }
