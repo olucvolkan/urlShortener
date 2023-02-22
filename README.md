@@ -7,7 +7,7 @@
 1 - `php artisan test`
 
 
-##Example Request
+## Example Request
 
 ```
 curl --location --request POST 'http://127.0.0.1:8000/api/shortlinks' \
@@ -40,7 +40,7 @@ curl --location --request POST 'http://127.0.0.1:8000/api/shortlinks' \
 }  '
 ```
 
-##Notes
+## Notes
 
 TinyUrl provider is working but bitly provider is not working because I need token.
 I was handled a provider fail case. If requested bitly, short link created from tinyUrl.

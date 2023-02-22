@@ -7,7 +7,7 @@ namespace App\DTO;
 use JsonSerializable;
 use Spatie\DataTransferObject\DataTransferObject;
 
-final class UrlShortenerPostResponseDTO implements JsonSerializable
+class UrlShortenerPostResponseDTO implements JsonSerializable
 {
     public string $url;
 
