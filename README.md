@@ -42,9 +42,7 @@ curl --location --request POST 'http://127.0.0.1:8000/api/shortlinks' \
 
 ## Notes
 
-TinyUrl provider is working but bitly provider is not working because I need token.
-I was handled a provider fail case. If requested bitly, short link created from tinyUrl.
-If you want try bitly, you can define token in .env file
+Bit.ly integration doesn’t work out of the box, as I can’t put the API token to .env file. Please set the token if you like to test that. Currently, it uses Tinyurl as fallback when you try to use Bit.ly.
 
 
 
